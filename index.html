@@ -70,7 +70,7 @@
     <article id="post-csapp第三章程序的机器级表示（2）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/11/csapp第三章程序的机器级表示（2）/" class="article-date">
-  <time datetime="2018-11-11T07:31:31.634Z" itemprop="datePublished">2018-11-11</time>
+  <time datetime="2018-11-11T09:13:50.993Z" itemprop="datePublished">2018-11-11</time>
 </a>
     
   </div>
@@ -90,11 +90,26 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>### </p>
+<p>本周总结下一个问题以及一些想法：</p>
+<p>​    Q：在汇编层面上，只有几个简单的指令：</p>
+<p>​            数据传输：数据从内存到寄存器，寄存器到内存</p>
+<p>​            算逻运算</p>
+<p>​            比较 和 跳转</p>
+<p>​        那么，这么几个简单的指令为什么能支撑起现实这个复杂的世界？</p>
+<p>   UnderStand：</p>
+<p>​    不管什么语言写的程序，也不管业务逻辑有多复杂，最终都需要转变成最基本的汇编形式，我们如果将现实世界放在计算机世界的顶层，那么从底层到实际现实需要的便是一层一层的抽象，先通过基本的运算，抽象出变量，抽象出来堆和栈，进而出现高级语言，各种框架，我们需要具备的便是这种层层而上的思想。        </p>
+<p>步入正题：第三章第二次笔记</p>
+<h3 id="数据传送："><a href="#数据传送：" class="headerlink" title="数据传送："></a>数据传送：</h3><p><img src="https://res.cloudinary.com/shmily/image/upload/v1541926075/assembly.png" alt=""></p>
+<p>如图所示，exchange函数由三条指令构成，两个数据传送（movq），一条返回函数被调用点的指令（ret）。</p>
+<p>过程开始执行，xp和y分别被存储到寄存器%rdi和%rsi中。第一条movq指令从内存中读出x，并放入%rax中，直接实现了c语言中的x=<em>xp；接着，用寄存器&amp;rax从这个函数返回一个值，因而返回值就是x。下一条指令将y的值写入到寄存器%rdi中的xp指向的内存位置，实现操作 </em>xp=y.该例子说明mov指令从内存中读值到寄存器和从寄存器写入内存。</p>
+<p>​    注意：间接引用指针就是将该指针放到一个寄存器中，然后在内存引用中使用这个寄存器，即movq第二条指令</p>
+<p>x这种局部变量，通常保存在寄存器中，而不是内存。</p>
+<p>​            </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/myDW6/myDW6.github.io.git/2018/11/11/csapp第三章程序的机器级表示（2）/" data-id="cjockwypx0001w8ke182lkrl5" class="article-share-link">Share</a>
+      <a data-url="https://github.com/myDW6/myDW6.github.io.git/2018/11/11/csapp第三章程序的机器级表示（2）/" data-id="cjocnwubp0002eokeucy0mbb5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/myDW6/myDW6.github.io.git/2018/11/06/csapp第二章-信息的处理和表示1/" data-id="cjockwypz0002w8ke6vge0ctf" class="article-share-link">Share</a>
+      <a data-url="https://github.com/myDW6/myDW6.github.io.git/2018/11/06/csapp第二章-信息的处理和表示1/" data-id="cjocnwubm0001eokej3l2dsx8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -272,7 +287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/myDW6/myDW6.github.io.git/2018/11/06/csapp第二章-信息的处理和表示2/" data-id="cjockwyq10003w8ke33lbvuzx" class="article-share-link">Share</a>
+      <a data-url="https://github.com/myDW6/myDW6.github.io.git/2018/11/06/csapp第二章-信息的处理和表示2/" data-id="cjocnwubr0003eoke55cdoh0v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -338,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/myDW6/myDW6.github.io.git/2018/11/06/csapp第一章/" data-id="cjockwypo0000w8keekjf3xla" class="article-share-link">Share</a>
+      <a data-url="https://github.com/myDW6/myDW6.github.io.git/2018/11/06/csapp第一章/" data-id="cjocnwubg0000eokew0rrv3yp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -432,7 +447,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/myDW6/myDW6.github.io.git/2018/11/06/记录自己两天的踩坑过程/" data-id="cjockwyq30004w8keopcot7iu" class="article-share-link">Share</a>
+      <a data-url="https://github.com/myDW6/myDW6.github.io.git/2018/11/06/记录自己两天的踩坑过程/" data-id="cjocnwubt0004eokeycvnrwqw" class="article-share-link">Share</a>
       
       
     </footer>
