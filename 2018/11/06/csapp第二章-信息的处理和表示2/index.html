@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh_CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="布尔代数弄清楚布尔代数的运算和逻辑运算以及离散数学中的命题逻辑的一一对应关系。 位向量固定长度为w，由0和1组成的串 位向量的运算可以对应为参数的每个对应元素的运算 任意a a^a=0 位向量表示有限集合，则布尔运算&amp;amp; 和|对应集合的交并 c语言中的位级运算位级运算的常见用法是实现掩码运算，掩码是一个位模式，表示从一个字中选出的位的集合 x&amp;amp;0xFF生成一个由最低有效字节生成的值，">
+<meta name="keywords" content="shaodw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="csapp第二章 信息的处理和表示(2)">
+<meta property="og:url" content="https://github.com/myDW6/myDW6.github.io.git/2018/11/06/csapp第二章-信息的处理和表示2/index.html">
+<meta property="og:site_name" content="17年在雾都的博客">
+<meta property="og:description" content="布尔代数弄清楚布尔代数的运算和逻辑运算以及离散数学中的命题逻辑的一一对应关系。 位向量固定长度为w，由0和1组成的串 位向量的运算可以对应为参数的每个对应元素的运算 任意a a^a=0 位向量表示有限集合，则布尔运算&amp;amp; 和|对应集合的交并 c语言中的位级运算位级运算的常见用法是实现掩码运算，掩码是一个位模式，表示从一个字中选出的位的集合 x&amp;amp;0xFF生成一个由最低有效字节生成的值，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.voidcn.com/vcimg/static/loading.png">
+<meta property="og:image" content="http://img.voidcn.com/vcimg/static/loading.png">
+<meta property="og:image" content="http://img.voidcn.com/vcimg/static/loading.png">
+<meta property="og:image" content="http://img.voidcn.com/vcimg/static/loading.png">
+<meta property="og:image" content="http://img.voidcn.com/vcimg/static/loading.png">
+<meta property="og:updated_time" content="2018-10-28T02:33:04.479Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="csapp第二章 信息的处理和表示(2)">
+<meta name="twitter:description" content="布尔代数弄清楚布尔代数的运算和逻辑运算以及离散数学中的命题逻辑的一一对应关系。 位向量固定长度为w，由0和1组成的串 位向量的运算可以对应为参数的每个对应元素的运算 任意a a^a=0 位向量表示有限集合，则布尔运算&amp;amp; 和|对应集合的交并 c语言中的位级运算位级运算的常见用法是实现掩码运算，掩码是一个位模式，表示从一个字中选出的位的集合 x&amp;amp;0xFF生成一个由最低有效字节生成的值，">
+<meta name="twitter:image" content="http://img.voidcn.com/vcimg/static/loading.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/myDW6/myDW6.github.io.git/2018/11/06/csapp第二章-信息的处理和表示2/"/>
+
+
+
+
+
+  <title>csapp第二章 信息的处理和表示(2) | 17年在雾都的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">17年在雾都的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">生活算不得精彩，但也有值得记录的意义^ ^</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/myDW6/myDW6.github.io.git/2018/11/06/csapp第二章-信息的处理和表示2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dw Shao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="17年在雾都的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">csapp第二章 信息的处理和表示(2)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-06T00:26:10+08:00">
+                2018-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="布尔代数"><a href="#布尔代数" class="headerlink" title="布尔代数"></a>布尔代数</h3><p>弄清楚布尔代数的运算和逻辑运算以及离散数学中的命题逻辑的一一对应关系。</p>
+<h3 id="位向量"><a href="#位向量" class="headerlink" title="位向量"></a>位向量</h3><p>固定长度为w，由0和1组成的串</p>
+<p>位向量的运算可以对应为参数的每个对应元素的运算</p>
+<p>任意a a^a=0</p>
+<p>位向量表示有限集合，则布尔运算&amp; 和|对应集合的交并</p>
+<h3 id="c语言中的位级运算"><a href="#c语言中的位级运算" class="headerlink" title="c语言中的位级运算"></a>c语言中的位级运算</h3><p>位级运算的常见用法是实现掩码运算，掩码是一个位模式，表示从一个字中选出的位的集合</p>
+<p>x&amp;0xFF生成一个由最低有效字节生成的值，其他的字节被置为0</p>
+<p>求补时要想到利用异或运算 对1异或可得其补，对0异或可得本身 见p39练习12</p>
+<h3 id="c中的逻辑运算"><a href="#c中的逻辑运算" class="headerlink" title="c中的逻辑运算"></a>c中的逻辑运算</h3><p>c中的逻辑运算符||  &amp;&amp;  ！ 对应命题逻辑中的OR AND NOT 注意区分逻辑运算和位级运算</p>
+<ol>
+<li>第一个区别   逻辑运算所有非0参数都表示为true 参数0才表示false ，按位运算只有在参数被限制为0或1时才和对应的逻辑运算有相同的行为</li>
+<li>第二个区别   如果对第一个参数求值就能确定表达式的结果，那么逻辑运算符不会对第二个参数求值</li>
+</ol>
+<h3 id="c中的移位运算（x-lt-lt-k）-x-gt-gt-k"><a href="#c中的移位运算（x-lt-lt-k）-x-gt-gt-k" class="headerlink" title="c中的移位运算（x&lt;&lt;k）(x&gt;&gt;k)"></a>c中的移位运算（x&lt;&lt;k）(x&gt;&gt;k)</h3><p>左移：向左移动k位，丢弃最高的k位，在右端补k个0</p>
+<p>逻辑右移：在左端补k个0，右移k位（无符号数必须逻辑右移）</p>
+<p>算术右移：在左端补k个最高有效位的值</p>
+<h4 id="java中"><a href="#java中" class="headerlink" title="java中"></a>java中</h4><p>x&gt;&gt;k会将x算术右移k个位置</p>
+<p>x&gt;&gt;&gt;k会对x做逻辑右移</p>
+<h3 id="整数表示"><a href="#整数表示" class="headerlink" title="整数表示"></a>整数表示</h3><p>书中记述的比较详细，这里仅列出一部分要点</p>
+<p>整型数中无符号数的编码，了解函数B2Uw（x的位模式）</p>
+<p>补码编码的方式，了解函数B2Tw（x的位模式）</p>
+<p>​    补码运算的一些特殊地方，0表示2非负数，所以最高位是1的数会比最高位是0的数多一个 ，也就是负数会比正数多一。</p>
+<p>有符号数和无符号数之间的转换：    </p>
+<p>​    强制类型转换结果保持位值不变，仅仅改变解释这些位的方式</p>
+<p>换句话说，同一个数据，只是解读方式不同 。 补码和无符号数之间的关系，举例16位位模式0xCFC7的补码表示是-12345，无符号表示位53191，而两者绝对值相加得到65536=2的16次方。</p>
+<p>补码转换为无符号数，使用函数T2Uw(x)</p>
+<p>x&lt;0时，函数值为x+2^w</p>
+<p>x&gt;0时，函数值为x</p>
+<p>无符号数转换位补码,调用函数U2Tw(u)</p>
+<p>u&lt;=TMaxw，函数值为u</p>
+<p>u&gt;TMaxw，函数值位u-2^w</p>
+<h4 id="扩展一个数字的位表示"><a href="#扩展一个数字的位表示" class="headerlink" title="扩展一个数字的位表示"></a>扩展一个数字的位表示</h4><p>对于一个无符号数转为更大的数据类型只需要简单地在表示的开头添加0，这种运算称为<strong>零扩展</strong></p>
+<p>对于有符号的数，即补码进行符号扩展(sign extension)，就是添加最高有效位的值</p>
+<h3 id="整数运算"><a href="#整数运算" class="headerlink" title="整数运算"></a>整数运算</h3><p>无符号加法</p>
+<p>x+y<code>=</code>(x+y)<code>mod</code>2^k`</p>
+<p>溢出会舍去</p>
+<p>阿贝尔群，群论。</p>
+<p>补码加法</p>
+<p>大多数计算机使用<strong>同样的机器指令</strong>来执行有符号和无符号之和。</p>
+<p><img src="http://img.voidcn.com/vcimg/static/loading.png" alt="img"></p>
+<p>x（有符号+）y= U2T（T2U（x+y) mod 2^w)</p>
+<ul>
+<li>先计算x+y</li>
+<li>将x+y转换为无符号类型z。</li>
+<li>p=z mod 2^w</li>
+<li>附.(或者直接对x+y的二进制表示进行截断得到p)</li>
+<li><p>将p用有符号类型表示</p>
+</li>
+<li><p>正溢出，正常，负溢出。</p>
+<p><img src="http://img.voidcn.com/vcimg/static/loading.png" alt="img"></p>
+</li>
+</ul>
+<p><img src="http://img.voidcn.com/vcimg/static/loading.png" alt="img"></p>
+<p>补码的非</p>
+<ul>
+<li>因为正负区间的不一致</li>
+<li>所以最小的那个负数的相反数<strong>逆元</strong>还是最小的那个负数。</li>
+<li>对于任意整数<code>x</code>。<code>-x</code>和<code>~x+1</code>得到的结果完全一样。</li>
+</ul>
+<p>无符号乘法</p>
+<p>只取低w位表示的值，其余截断</p>
+<p> 补码乘法</p>
+<p>对于无符号和补码乘法，乘法运算的<strong>位级表示</strong>都是一样的，是同一条指令。无符号和补码相乘出来的两个数的低W位 <strong>永远相等</strong>。证明见书。</p>
+<p><img src="http://img.voidcn.com/vcimg/static/loading.png" alt="img"></p>
+<p> 乘常数</p>
+<p>因为乘法速度太慢，机器可能会用（加法，减法，移位）来代替乘法。</p>
+<p><img src="http://img.voidcn.com/vcimg/static/loading.png" alt="img"></p>
+<p> 除以2的幂</p>
+<p>对于无符号类型或整数，直接右移不会有任何问题。</p>
+<p>对于负数，最后的值为-48.3，会舍入成 -49，而不是-48.</p>
+<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><p>一个二进制串分为三部分。</p>
+<blockquote>
+<ol>
+<li>符号位，1位，决定正负。</li>
+<li>阶码 E，对浮点数加权，2^E。C语言里float，8位；double, 11位。</li>
+<li>尾数 M，二进制小数，计算分情况。C里float, 23位；double, 52位。</li>
+</ol>
+</blockquote>
+<p>计算根据阶码分为三种，规格化、非规格化、特殊值，float为例：</p>
+<blockquote>
+<ol>
+<li>规格化，E各位不全为0也不全为1，即e!=0 &amp;&amp; e!=255。E = e - 127。所以E的范围其实是[-126, 127] 。此时 M = m + 1。所以最后绝对值为 M·2^E = (m+1)·2^(e-127)。</li>
+<li>非规格化，全为0，e=0。E = 1 - 127. M = m。所以最后绝对值为 M·2^E = m·2^(-126)。当m取最小值2^(-23)时，这也是float能够表示的最小非零数，2^(-149)。</li>
+<li>特殊值，全为1，e=255。当m=0时，根据符号位分别得到+∞和-∞。当m!=0时，得到NaN，意为 Not a Number。</li>
+</ol>
+</blockquote>
+<p>至于为什么e=0时，M=m而不是M=m+1？<br>此处结合e=0时，E也不是0-127，而是1-127,正好等于规格化的最小e，也是1-127。这个在非规格化向规格化过渡的时候，相同的指数值，保证整个f的值会随着m的增长而增大（线性的）。因此，对浮点数排序时，也可以像整数一样，直接比较其二进制位，从高位开始比较。</p>
+<p>这个设计很有意思，假如在非规格化时，E=0-127，M=1+m，非规格化最大数为E=-127,M=1+(2^23-1)/2^23，f=2^E·M=2^(-126)-2^(-150)。规格化最小数为E=1-127，M=1+0，f’=2^(-126)。（哎？f’&gt;f，额这是哪里算错了吗？）f’-f=2^(-150).</p>
+<p>真实情况是，非规格化最大数为E=1-127，M=(2^23-1)/2^23，f=2^(-126)-2^(-149)，规格化最小数仍然是f’=2^(-126).f’-f=2^(-149)。这正是相邻的两个非规格化数的间隔2^(-126)·2^(-23)=2^(-149)。也就是说IEEE的这种设计保持了在非规格化和规格化数之间的一个平滑过渡。 </p>
+<p>​    强转与舍入</p>
+<ul>
+<li>int转为float，不会溢出，但是可能被舍入，毕竟都只有2^32个状态，能表达的总信息量是一定的。如2^24+1和2^24强转为float后，值为2^24.000000。舍入的时候会有一种特殊情况，称为向偶数舍入，在非有效位值正好是两个可能值的中间值时，我们倾向于通过取舍，使得有效位的最后一位为0. </li>
+<li>double转float, 可能溢出为-∞或+∞. </li>
+<li>float和double转int，向零舍入。如果出现溢出，则值会变成0b1000 0000，也就是-Min。 </li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/06/csapp第一章/" rel="next" title="csapp第一章">
+                <i class="fa fa-chevron-left"></i> csapp第一章
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/06/csapp第二章-信息的处理和表示1/" rel="prev" title="csapp第二章 信息的处理和表示(1)">
+                csapp第二章 信息的处理和表示(1) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">dw Shao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#布尔代数"><span class="nav-number">1.</span> <span class="nav-text">布尔代数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位向量"><span class="nav-number">2.</span> <span class="nav-text">位向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c语言中的位级运算"><span class="nav-number">3.</span> <span class="nav-text">c语言中的位级运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c中的逻辑运算"><span class="nav-number">4.</span> <span class="nav-text">c中的逻辑运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c中的移位运算（x-lt-lt-k）-x-gt-gt-k"><span class="nav-number">5.</span> <span class="nav-text">c中的移位运算（x&lt;&lt;k）(x&gt;&gt;k)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#java中"><span class="nav-number">5.1.</span> <span class="nav-text">java中</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整数表示"><span class="nav-number">6.</span> <span class="nav-text">整数表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展一个数字的位表示"><span class="nav-number">6.1.</span> <span class="nav-text">扩展一个数字的位表示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整数运算"><span class="nav-number">7.</span> <span class="nav-text">整数运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浮点数"><span class="nav-number">8.</span> <span class="nav-text">浮点数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dw Shao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

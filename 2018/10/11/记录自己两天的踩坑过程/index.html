@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh_CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="​     Ubuntu的配置和美化，话不多说，先上一张图  配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime text，intellij idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来~/.bashrc文件配置在末尾加上 export JAVA_HOME=/usr/java/jdk-10">
+<meta name="keywords" content="shaodw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录下Ubuntu的美化和使用">
+<meta property="og:url" content="https://github.com/myDW6/myDW6.github.io.git/2018/10/11/记录自己两天的踩坑过程/index.html">
+<meta property="og:site_name" content="17年在雾都的博客">
+<meta property="og:description" content="​     Ubuntu的配置和美化，话不多说，先上一张图  配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime text，intellij idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来~/.bashrc文件配置在末尾加上 export JAVA_HOME=/usr/java/jdk-10">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://res.cloudinary.com/shmily/image/upload/v1538465988/sys.png">
+<meta property="og:image" content="https://res.cloudinary.com/shmily/image/upload/v1538468221/sys2.png">
+<meta property="og:updated_time" content="2018-10-11T05:54:14.861Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记录下Ubuntu的美化和使用">
+<meta name="twitter:description" content="​     Ubuntu的配置和美化，话不多说，先上一张图  配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime text，intellij idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来~/.bashrc文件配置在末尾加上 export JAVA_HOME=/usr/java/jdk-10">
+<meta name="twitter:image" content="https://res.cloudinary.com/shmily/image/upload/v1538465988/sys.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/myDW6/myDW6.github.io.git/2018/10/11/记录自己两天的踩坑过程/"/>
+
+
+
+
+
+  <title>记录下Ubuntu的美化和使用 | 17年在雾都的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">17年在雾都的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">生活算不得精彩，但也有值得记录的意义^ ^</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/myDW6/myDW6.github.io.git/2018/10/11/记录自己两天的踩坑过程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dw Shao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="17年在雾都的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">记录下Ubuntu的美化和使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-11T13:54:14+08:00">
+                2018-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>​    </p>
+<p>Ubuntu的配置和美化，话不多说，先上一张图</p>
+<p><img src="https://res.cloudinary.com/shmily/image/upload/v1538465988/sys.png" alt="rutu"></p>
+<h2 id="配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime-text，intellij-idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来"><a href="#配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime-text，intellij-idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来" class="headerlink" title="配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime text，intellij idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来"></a>配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime text，intellij idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来</h2><h3 id="bashrc文件配置"><a href="#bashrc文件配置" class="headerlink" title="~/.bashrc文件配置"></a>~/.bashrc文件配置</h3><p>在末尾加上</p>
+<p>export JAVA_HOME=/usr/java/jdk-10.0.2<br>export JRE_HOME=${JAVA_HOME}/jre<br>export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib<br>export PATH=${JAVA_HOME}/bin:$PATH</p>
+<p>这里主要是配置jdk</p>
+<h3 id="etc-profile文件配置"><a href="#etc-profile文件配置" class="headerlink" title="/etc/profile文件配置"></a>/etc/profile文件配置</h3><p>在末尾加上</p>
+<p>CATALINA_HOME=//home/dw/apache-tomcat-7.0.91<br>export CATALINA_HOME</p>
+<p>这里主要配置tomcat</p>
+<h4 id="shadowsocks-qt5"><a href="#shadowsocks-qt5" class="headerlink" title="shadowsocks-qt5"></a>shadowsocks-qt5</h4><p>1 在ubuntu18.04之前的版本下载ss-qt5的步骤是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:hzwhuang/ss-qt5</span><br><span class="line"></span><br><span class="line">  	sudo apt-get update</span><br><span class="line"></span><br><span class="line">  	sudo apt-get install shadowsocks-qt5</span><br></pre></td></tr></table></figure>
+<p>2.但是ppa:hzwhuang/ss-qt5 并没有18.04版本的源，所以再执行update会报错。</p>
+<p>​    这时，只要编辑/etc/apt/sources.list.d/hzwhuang-ubuntu-ss-qt5-bionic.list 文件，将bionic                       (18.04版本代号)改成xenial（16.04版本代号）。</p>
+<p>​    然后再执行</p>
+<p>​    sudo apt-get update</p>
+<p>​    成功之后就是</p>
+<p>​    sudo apt-get install shadowsocks-qt5 </p>
+<p>​    完成。</p>
+<p>至于在google chrome中配置switch omega可以很容易百度到，这里就不在阐述。</p>
+<h4 id="intellij-idea"><a href="#intellij-idea" class="headerlink" title="intellij idea"></a>intellij idea</h4><p>​    主要讲解下破解，ctrl alt t打开终端，vim编辑/etc/hosts 文件 将0.0.0.0 account.jetbrains.com添加入hosts  然后进入 <a href="http://idea.lanyus.com/" target="_blank" rel="noopener">http://idea.lanyus.com/</a> 获取注册码即可</p>
+<h4 id="Apache-tomcat"><a href="#Apache-tomcat" class="headerlink" title="Apache tomcat"></a>Apache tomcat</h4><p>这里我下载的是tomcat 7  </p>
+<p>这里有几点要注意的地方，至少在我这台机子上是这样  首先要编辑bin目录下的catalina.sh文件，在文件开头加入</p>
+<p>CATALINA_HOME=tomcat目录<br>JAVA_HOME=jdk目录</p>
+<p>有可能会在idea出现tomcat权限不够而无法将tomcat集成到项目中这时候就需要</p>
+<p>sudo chmod -R 777 tomcat的目录</p>
+<h4 id="tim"><a href="#tim" class="headerlink" title="tim"></a>tim</h4><p>这里推荐一片文章，是deepin linux移植过来的wine tim</p>
+<p><a href="https://www.lulinux.com/archives/1319" target="_blank" rel="noopener">https://www.lulinux.com/archives/1319</a></p>
+<p><strong>1，安装deepin-wine环境：</strong>上<a href="https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu" target="_blank" rel="noopener">https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu</a>页面下载zip包（或用git方式克隆），解压到本地文件夹，在文件夹中打开终端，输入<code>sudo sh ./install.sh</code>一键安装。</p>
+<p><strong>2，安装deepin.com应用容器：</strong>在<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/</a>中下载想要的容器，点击deb安装即可。以下为推荐容器:</p>
+<ul>
+<li>QQ：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.im/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.im/</a></li>
+<li>TIM：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.office/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.office/</a></li>
+<li>QQ轻聊版：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.im.light/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.im.light/</a></li>
+<li>微信：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.wechat/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.wechat/</a></li>
+<li>Foxmail：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.foxmail/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.foxmail/</a></li>
+<li>百度网盘：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.baidu.pan/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.baidu.pan/</a></li>
+<li>360压缩：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.cn.360.yasuo/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.cn.360.yasuo/</a></li>
+</ul>
+<p><strong>3，Ubuntu 18.04 Gnome桌面显示传统托盘图标：</strong>安装TopIconPlus的gnome-shell扩展，命令：<code>sudo apt-get install gnome-shell-extension-top-icons-plus gnome-tweaks</code>，然后用gnome-tweaks开启这个扩展。</p>
+<p>关于这个第三步讲解一下，gnome是18.04的桌面环境 如果需要美化则需要gnome-tweak-tool这个工具，可以apt install安装，但是里面的拓展很少，我把我电脑里的拓展截图下来</p>
+<p><img src="https://res.cloudinary.com/shmily/image/upload/v1538468221/sys2.png" alt="image"></p>
+<p>当你安装好tweak tool，再安装上述第三个工具会出现很多拓展，至于每个拓展有什么用，自己去试吧</p>
+<p>上述有一个dash to dock的可以这样安装</p>
+<p>​    1 安装git： sudo apt-get install git </p>
+<p>​    2 sudo git clone <a href="https://github.com/micheleg/dash-to-dock.git">https://github.com/micheleg/dash-to-dock.git</a></p>
+<p>​    3 cd dash to dock</p>
+<p>​    4 sudo make </p>
+<p>​    5 make install</p>
+<p>因为git下来的是源代码，你需要手动make才可以使用，上述完成之后，alt+f2 输入r 重启桌面 ，打开tweak tool即可</p>
+<p>电脑右上角有个显示网速的工具叫系统负载查看器 软件商店里有    安装后自己配置</p>
+<p>首选项中全不勾选</p>
+<p>indicator items把网速置顶即可    </p>
+<h4 id="flameshot"><a href="#flameshot" class="headerlink" title="flameshot"></a>flameshot</h4><p>Ubuntu上还有个好用的截图工具flameshot   具体这样配置</p>
+<p> <strong>sudo apt-get install flameshot</strong></p>
+<p>进入 设置&gt;设备&gt;键盘，拉到最下面，点击加号</p>
+<p>快捷键命令填写：<strong>flameshot gui</strong></p>
+<p>暂时更新到这里</p>
+<p>​    </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/11/csapp第一章/" rel="prev" title="csapp第一章">
+                csapp第一章 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">dw Shao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime-text，intellij-idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来"><span class="nav-number">1.</span> <span class="nav-text">配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime text，intellij idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bashrc文件配置"><span class="nav-number">1.1.</span> <span class="nav-text">~/.bashrc文件配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-profile文件配置"><span class="nav-number">1.2.</span> <span class="nav-text">/etc/profile文件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#shadowsocks-qt5"><span class="nav-number">1.2.1.</span> <span class="nav-text">shadowsocks-qt5</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#intellij-idea"><span class="nav-number">1.2.2.</span> <span class="nav-text">intellij idea</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Apache-tomcat"><span class="nav-number">1.2.3.</span> <span class="nav-text">Apache tomcat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tim"><span class="nav-number">1.2.4.</span> <span class="nav-text">tim</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flameshot"><span class="nav-number">1.2.5.</span> <span class="nav-text">flameshot</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dw Shao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
