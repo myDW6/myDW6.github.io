@@ -1,62 +1,97 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   
+
+  
   <title>csapp第一章 | 17年在雾都的博客</title>
-  <meta name="author" content="dw Shao">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="收获： 程序的生命周期： 从熟悉的利用ｃ语言编写的hello.c文本文件，经过预处理 编译 汇编 链接阶段生成可执行目标文件 然后保存存储到磁盘上，当在shell里键入./ hello后 shell程序将字符读入寄存器，再存放到内存 敲下回车键 shell知道已经结束输入 加载可执行的hello 程序中的代码和数据从磁盘复制到内存 通过dma省去数据经过处理器的过程  当hello中的代码和数据被">
+<meta name="keywords" content="shaodw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="csapp第一章">
+<meta property="og:url" content="https://github.com/myDW6/myDW6.github.io.git/2018/11/06/csapp第一章/index.html">
+<meta property="og:site_name" content="17年在雾都的博客">
+<meta property="og:description" content="收获： 程序的生命周期： 从熟悉的利用ｃ语言编写的hello.c文本文件，经过预处理 编译 汇编 链接阶段生成可执行目标文件 然后保存存储到磁盘上，当在shell里键入./ hello后 shell程序将字符读入寄存器，再存放到内存 敲下回车键 shell知道已经结束输入 加载可执行的hello 程序中的代码和数据从磁盘复制到内存 通过dma省去数据经过处理器的过程  当hello中的代码和数据被">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2018-10-11T06:03:34.652Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="csapp第一章">
+<meta name="twitter:description" content="收获： 程序的生命周期： 从熟悉的利用ｃ语言编写的hello.c文本文件，经过预处理 编译 汇编 链接阶段生成可执行目标文件 然后保存存储到磁盘上，当在shell里键入./ hello后 shell程序将字符读入寄存器，再存放到内存 敲下回车键 shell知道已经结束输入 加载可执行的hello 程序中的代码和数据从磁盘复制到内存 通过dma省去数据经过处理器的过程  当hello中的代码和数据被">
   
-  <meta name="description" content="收获：
-程序的生命周期：
-从熟悉的利用ｃ语言编写的hello.c文本文件，经过预处理 编译 汇编 链接阶段生成可执行目标文件 然后保存存储到磁盘上，当在shell里键入./ hello后 shell程序将字符读入寄存器，再存放到内存 敲下回车键 shell知道已经结束输入 加载可执行的hello 程">
+    <link rel="alternate" href="/atom.xml" title="17年在雾都的博客" type="application/atom+xml">
   
   
-
-  <link rel="alternate" href="/atom.xml" title="17年在雾都的博客" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <link rel="icon" href="/favicon.png">
   
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-  <header id="header" class="inner"><nav>
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-</nav></header>
-  <div id="content" class="inner"><article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">17年在雾都的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">生活算不得精彩，但也有值得记录的意义^ ^</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/myDW6/myDW6.github.io.git"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-csapp第一章" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/06/csapp第一章/" class="article-date">
+  <time datetime="2018-11-05T16:26:10.045Z" itemprop="datePublished">2018-11-06</time>
+</a>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title">csapp第一章</h1>
+    <h1 class="article-title" itemprop="name">
+      csapp第一章
+    </h1>
   
 
-    <time datetime="2018-11-05T16:26:10.045Z">
-  <span class="day">6</span><span class="month">Nov</span>
-</time>
-  </header>
-  <div class="entry-content">
+      </header>
     
-      <h2 id="收获："><a href="#收获：" class="headerlink" title="收获："></a>收获：</h2><ol>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="收获："><a href="#收获：" class="headerlink" title="收获："></a>收获：</h2><ol>
 <li><p>程序的生命周期：</p>
 <p>从熟悉的利用ｃ语言编写的hello.c文本文件，经过预处理 编译 汇编 链接阶段生成可执行目标文件 然后保存存储到磁盘上，当在shell里键入./ hello后 shell程序将字符读入寄存器，再存放到内存 敲下回车键 shell知道已经结束输入 加载可执行的hello 程序中的代码和数据从磁盘复制到内存 通过dma省去数据经过处理器的过程  当hello中的代码和数据被加载到内存  处理器开始执行main程序的机器语言指令，这些指令将字符串中的字节从内存复制到寄存器 再复制到显示设备</p>
 </li>
@@ -87,50 +122,124 @@
 <p>注：上一级的存储器作为低一级的存储器的高速缓存</p>
 <h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><h4 id="并行必须要多核吗？"><a href="#并行必须要多核吗？" class="headerlink" title="并行必须要多核吗？"></a>并行必须要多核吗？</h4><pre><code>并行需要多核，多个线程**同时**在多个cpu上运行
 </code></pre>
-    
-    
-    <footer class="meta">
       
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/myDW6/myDW6.github.io.git/2018/11/06/csapp第一章/" data-id="cjoczb95i00002fkenum5t0k6" class="article-share-link">Share</a>
       
       
     </footer>
-    
   </div>
   
-</article></div>
-  <footer id="footer" class="inner"><div class="social alignright">
+    
+<nav id="article-nav">
+  
+    <a href="/2018/11/06/csapp第二章-信息的处理和表示2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          csapp第二章 信息的处理和表示(2)
+        
+      </div>
+    </a>
   
   
+    <a href="/2018/11/06/记录自己两天的踩坑过程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">记录下Ubuntu的美化和使用</div>
+    </a>
   
+</nav>
+
   
-  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
-</div>
-<p>
+</article>
+
+</section>
+        
+          <aside id="sidebar">
   
-  &copy; 2018 dw Shao
+    
+
   
-</p>
-<div class="clearfix"></div></footer>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/11/csapp第三章程序的机器级表示（2）/">csapp第三章 程序的机器级表示（2）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/06/csapp第二章-信息的处理和表示1/">csapp第二章 信息的处理和表示(1)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/06/csapp第二章-信息的处理和表示2/">csapp第二章 信息的处理和表示(2)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/06/csapp第一章/">csapp第一章</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/06/记录自己两天的踩坑过程/">记录下Ubuntu的美化和使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 dw Shao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
 
 
 
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-
-<div id="phasebeam">
-  <canvas></canvas>
-  <canvas></canvas>
-  <canvas></canvas>
-</div>
-<script src="/js/phasebeam.js"></script>
+  </div>
 </body>
 </html>

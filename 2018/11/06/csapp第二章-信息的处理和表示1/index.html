@@ -1,61 +1,97 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   
+
+  
   <title>csapp第二章 信息的处理和表示(1) | 17年在雾都的博客</title>
-  <meta name="author" content="dw Shao">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="信息存储计算机可寻址的内存单元叫字节，机器级程序将内存视为一个字节数组，称为虚拟内存。内存的每个字节由一个数字标识，该数字就是地址，所有可能地址的集合称为虚拟地址空间，这个虚拟地址空间可视为一个展示给机器级别程序的抽象，即是为程序提供的一个看上去统一的字节数组 字数据大小计算机的字长，表明指针数据的标称大小。因为虚拟地址按照这样的一个字来编码，所以字长可以决定虚拟地址空间的最大大小。即w位的机器，">
+<meta name="keywords" content="shaodw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="csapp第二章 信息的处理和表示(1)">
+<meta property="og:url" content="https://github.com/myDW6/myDW6.github.io.git/2018/11/06/csapp第二章-信息的处理和表示1/index.html">
+<meta property="og:site_name" content="17年在雾都的博客">
+<meta property="og:description" content="信息存储计算机可寻址的内存单元叫字节，机器级程序将内存视为一个字节数组，称为虚拟内存。内存的每个字节由一个数字标识，该数字就是地址，所有可能地址的集合称为虚拟地址空间，这个虚拟地址空间可视为一个展示给机器级别程序的抽象，即是为程序提供的一个看上去统一的字节数组 字数据大小计算机的字长，表明指针数据的标称大小。因为虚拟地址按照这样的一个字来编码，所以字长可以决定虚拟地址空间的最大大小。即w位的机器，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2018-10-28T02:28:11.260Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="csapp第二章 信息的处理和表示(1)">
+<meta name="twitter:description" content="信息存储计算机可寻址的内存单元叫字节，机器级程序将内存视为一个字节数组，称为虚拟内存。内存的每个字节由一个数字标识，该数字就是地址，所有可能地址的集合称为虚拟地址空间，这个虚拟地址空间可视为一个展示给机器级别程序的抽象，即是为程序提供的一个看上去统一的字节数组 字数据大小计算机的字长，表明指针数据的标称大小。因为虚拟地址按照这样的一个字来编码，所以字长可以决定虚拟地址空间的最大大小。即w位的机器，">
   
-  <meta name="description" content="信息存储计算机可寻址的内存单元叫字节，机器级程序将内存视为一个字节数组，称为虚拟内存。内存的每个字节由一个数字标识，该数字就是地址，所有可能地址的集合称为虚拟地址空间，这个虚拟地址空间可视为一个展示给机器级别程序的抽象，即是为程序提供的一个看上去统一的字节数组
-字数据大小计算机的字长，表明指针数据的">
+    <link rel="alternate" href="/atom.xml" title="17年在雾都的博客" type="application/atom+xml">
   
   
-
-  <link rel="alternate" href="/atom.xml" title="17年在雾都的博客" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <link rel="icon" href="/favicon.png">
   
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-  <header id="header" class="inner"><nav>
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-</nav></header>
-  <div id="content" class="inner"><article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">17年在雾都的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">生活算不得精彩，但也有值得记录的意义^ ^</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/myDW6/myDW6.github.io.git"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-csapp第二章-信息的处理和表示1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/06/csapp第二章-信息的处理和表示1/" class="article-date">
+  <time datetime="2018-11-05T16:26:10.105Z" itemprop="datePublished">2018-11-06</time>
+</a>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title">csapp第二章 信息的处理和表示(1)</h1>
+    <h1 class="article-title" itemprop="name">
+      csapp第二章 信息的处理和表示(1)
+    </h1>
   
 
-    <time datetime="2018-11-05T16:26:10.105Z">
-  <span class="day">6</span><span class="month">Nov</span>
-</time>
-  </header>
-  <div class="entry-content">
+      </header>
     
-      <h2 id="信息存储"><a href="#信息存储" class="headerlink" title="信息存储"></a>信息存储</h2><p>计算机可寻址的内存单元叫字节，机器级程序将内存视为一个字节数组，称为虚拟内存。内存的每个字节由一个数字标识，该数字就是地址，所有可能地址的集合称为虚拟地址空间，这个虚拟地址空间可视为一个展示给机器级别程序的抽象，即是为程序提供的一个看上去统一的字节数组</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="信息存储"><a href="#信息存储" class="headerlink" title="信息存储"></a>信息存储</h2><p>计算机可寻址的内存单元叫字节，机器级程序将内存视为一个字节数组，称为虚拟内存。内存的每个字节由一个数字标识，该数字就是地址，所有可能地址的集合称为虚拟地址空间，这个虚拟地址空间可视为一个展示给机器级别程序的抽象，即是为程序提供的一个看上去统一的字节数组</p>
 <h2 id="字数据大小"><a href="#字数据大小" class="headerlink" title="字数据大小"></a>字数据大小</h2><p>计算机的字长，表明指针数据的标称大小。因为虚拟地址按照这样的一个字来编码，所以字长可以决定虚拟地址空间的最大大小。即w位的机器，虚拟地址范围是0到2的w次方减1</p>
 <p>程序一般是向后兼容，即32位机器编译的程序，可以在32位或者64位的机器上运行 如果是在64位机器上编译的程序，就只能在64位机器上运行，我们说32位/64位程序属猴的是程序是被编译的机器类型，而不是其运行的机器类型</p>
 <h2 id="寻址和字节顺序"><a href="#寻址和字节顺序" class="headerlink" title="寻址和字节顺序"></a>寻址和字节顺序</h2><p>对于多字节的程序对象，需要知道对象的地址以及在内存中如何排列地址里面的字节。在几乎所有机器上，多字节的对象都被存储成连续的字节序列，对象的地址是这些字节中最小的地址。</p>
@@ -67,50 +103,124 @@
 </ol>
 <p>c中字符串被编码成一个以null（值为0）字符结尾的字符数组</p>
 
-    
-    
-    <footer class="meta">
       
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/myDW6/myDW6.github.io.git/2018/11/06/csapp第二章-信息的处理和表示1/" data-id="cjoczb95t00022fke3t3mgcz7" class="article-share-link">Share</a>
       
       
     </footer>
-    
   </div>
   
-</article></div>
-  <footer id="footer" class="inner"><div class="social alignright">
+    
+<nav id="article-nav">
+  
+    <a href="/2018/11/11/csapp第三章程序的机器级表示（2）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          csapp第三章 程序的机器级表示（2）
+        
+      </div>
+    </a>
   
   
+    <a href="/2018/11/06/csapp第二章-信息的处理和表示2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">csapp第二章 信息的处理和表示(2)</div>
+    </a>
   
+</nav>
+
   
-  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
-</div>
-<p>
+</article>
+
+</section>
+        
+          <aside id="sidebar">
   
-  &copy; 2018 dw Shao
+    
+
   
-</p>
-<div class="clearfix"></div></footer>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/11/csapp第三章程序的机器级表示（2）/">csapp第三章 程序的机器级表示（2）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/06/csapp第二章-信息的处理和表示1/">csapp第二章 信息的处理和表示(1)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/06/csapp第二章-信息的处理和表示2/">csapp第二章 信息的处理和表示(2)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/06/csapp第一章/">csapp第一章</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/06/记录自己两天的踩坑过程/">记录下Ubuntu的美化和使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 dw Shao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
 
 
 
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-
-<div id="phasebeam">
-  <canvas></canvas>
-  <canvas></canvas>
-  <canvas></canvas>
-</div>
-<script src="/js/phasebeam.js"></script>
+  </div>
 </body>
 </html>
