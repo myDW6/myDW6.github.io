@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>csapp第三章 程序的机器级表示（3） | 17年在雾都的博客</title>
+  <meta name="author" content="dw Shao">
+
+  
+  <meta name="description" content="总结：​    第三章总的来说，可以说是简要的说明了汇编语言的一些细节
+之前学校有开设汇编语言的课程，只是那时的自己还处在懵逼的时代，感觉这种底层的知识离我很遥远，但是当我渐渐改变，迷迷糊糊的看完csapp第三章后，也能得到一些感慨：    那就随便说说吧！
+感慨先看一个c语言代码
+12345int">
+  
+  
+
+  <link rel="alternate" href="/atom.xml" title="17年在雾都的博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+</head>
+
+<body>
+  <header id="header" class="inner"><nav>
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+  <div id="content" class="inner"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title">csapp第三章 程序的机器级表示（3）</h1>
+  
+
+    <time datetime="2018-11-18T08:03:18.372Z">
+  <span class="day">18</span><span class="month">Nov</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>​    第三章总的来说，可以说是简要的说明了汇编语言的一些细节</p>
+<p>之前学校有开设汇编语言的课程，只是那时的自己还处在懵逼的时代，感觉这种底层的知识离我很遥远，但是当我渐渐改变，迷迷糊糊的看完csapp第三章后，也能得到一些感慨：    那就随便说说吧！</p>
+<h4 id="感慨"><a href="#感慨" class="headerlink" title="感慨"></a>感慨</h4><p>先看一个c语言代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int sum(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    int t=x+y;</span><br><span class="line">    return t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>生成汇编代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">movl (%ebp),%eax  从内存中得到x放入eax寄存器</span><br><span class="line">movl 4(%ebp),%edx  从内存中得到y  放入edx寄存器</span><br><span class="line">addl %edx,%eax       将x和y相加</span><br></pre></td></tr></table></figure>
+<p>以IA32来说明：    </p>
+<p>​    mov 是移动，将%ebp 移动到%eax 后面的l是区分不同的数据类型的  char int double 这些类型，l就是为了区别它们     这个指令将一个地址里面的数移动到另一个地方，也就想当于赋值  。</p>
+<p>想想：我们将一个短数据放入长数据位置会怎么样？</p>
+<p>一个char放入一个int的空间，会剩下8位空的，那么需要使用movsbl（符号拓展）和movzbl（0拓展）这两个指令  c语言中的有符号无符号之间的运算，便需要借助这些指令。</p>
+<h6 id="操作数指示符"><a href="#操作数指示符" class="headerlink" title="操作数指示符"></a>操作数指示符</h6><p>c语言具有不同的数据类型，汇编也一样：</p>
+<p>​    立即数类型, 也就是常数，在程序中我们会常常用到常数，在ATT表示下是一个常数前面加上$。</p>
+<p>​    寄存器类型，CPU中，有一个寄存器文件，寄存器类型就是指寄存器文件中某个寄存器中的内容。</p>
+<p>​    存储器引用，存储器指我们的内存区，内存相当于一个大型的字节数组，这里的存储器引用就是指这个数组的索引(数组的下标)</p>
+<h5 id="常见指令"><a href="#常见指令" class="headerlink" title="常见指令"></a>常见指令</h5><p>书中讲解的比较详细；这里挑一个出来说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int choose(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    if(x&lt;y)</span><br><span class="line">        return y-x;</span><br><span class="line">    else</span><br><span class="line">        return x-y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">movl 8(%ebp),%edx   x在%ebp+8处</span><br><span class="line">movl 12(%ebp),%eax  y在%ebp+12处</span><br><span class="line">cmpl %eax,%edx</span><br><span class="line">jge  .L2</span><br><span class="line">subl %edx,%eax</span><br><span class="line">jmp .L3</span><br><span class="line">.L2:</span><br><span class="line">subl %eax,%edx</span><br><span class="line">movl %edx,%eax</span><br><span class="line">.L3:</span><br></pre></td></tr></table></figure>
+<p>第三条指令就是比较指令，    可以发现：每条比较指令下面跟着一条跳转语句，执行完比较操作后，相应的标志位会置位。</p>
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+</article></div>
+  <footer id="footer" class="inner"><div class="social alignright">
+  
+  
+  
+  
+  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
+</div>
+<p>
+  
+  &copy; 2018 dw Shao
+  
+</p>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id="phasebeam">
+  <canvas></canvas>
+  <canvas></canvas>
+  <canvas></canvas>
+</div>
+<script src="/js/phasebeam.js"></script>
+</body>
+</html>
