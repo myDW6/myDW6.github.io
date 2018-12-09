@@ -44,6 +44,58 @@
   <header>
     
   
+    <h1 class="title"><a href="/2018/12/09/csapp第七章(1)/">csapp第七章 链接(1)</a></h1>
+  
+
+    <time datetime="2018-12-09T09:43:30.761Z">
+  <span class="day">9</span><span class="month">Dec</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><p>​    将各种代码和数据收集和组合成为一个单一文件的过程</p>
+<p>链接的好处是：分离编译  我们可以不用把应用程序组织为一个巨大的源文件，而是将它分解成更小，更好管理的模块，独立修改和编译</p>
+<h4 id="静态链接"><a href="#静态链接" class="headerlink" title="静态链接"></a>静态链接</h4><p>为了构成可执行文件：链接器必须完成：符号解析 重定位两个任务</p>
+<p>符号解析：目标文件定义和引用符号。</p>
+<p>​    每个符号可以对应c语言中的函数，全局变量，静态变量。符号解析的作用就是将这些符号引用和符号定义关联起来</p>
+<p>重定位：通过之前的学习了解到：我们的代码和数据会存储在以0地址开始的区域，但                      是多个可重定位的文件都是以这样的方式，我们怎么样将他们组合呢？</p>
+<p>链接器可以通过把每个符号与一个内存关联，从而实现重定位</p>
+<h4 id="目标文件"><a href="#目标文件" class="headerlink" title="目标文件"></a>目标文件</h4><p>​    1可重定位目标文件：    包含二进制代码和数据，与其他可重定位目标文件合并成可执行文件</p>
+<p>​    2可执行目标文件：        包含二进制代码和数据，可以直接被复制到内存中执行</p>
+<p>​    3共享目标文件    ：        一种特殊的可重定位目标文件  可以在程序加载运行时被动态加载入内存</p>
+<p>我们熟悉的编译 汇编 链接过程中，前两个过程会生成可重定向目标文件（包括3）链接器会生成可执行目标文件</p>
+<p>解释下目标文件的意思：一个以特定文件格式的形式存放在硬盘上的一个字节序列（目标模块）a.out   a.exe  等等</p>
+<p>​    </p>
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+</article>
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
     <h1 class="title"><a href="/2018/12/02/csapp第六章存储器层次结构/">csapp第六章 存储器层次结构</a></h1>
   
 
