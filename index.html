@@ -96,6 +96,103 @@
   <header>
     
   
+    <h1 class="title"><a href="/2018/12/09/记录自己两天的踩坑过程/">记录下Ubuntu的美化和使用</a></h1>
+  
+
+    <time datetime="2018-12-09T09:18:13.617Z">
+  <span class="day">9</span><span class="month">Dec</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <p>​    </p>
+<p>Ubuntu的配置和美化，话不多说，先上一张图</p>
+<p><img src="https://res.cloudinary.com/shmily/image/upload/v1538465988/sys.png" alt="rutu"></p>
+<h2 id="配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime-text，intellij-idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来"><a href="#配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime-text，intellij-idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来" class="headerlink" title="配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime text，intellij idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来"></a>配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime text，intellij idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来</h2><h3 id="bashrc文件配置"><a href="#bashrc文件配置" class="headerlink" title="~/.bashrc文件配置"></a>~/.bashrc文件配置</h3><p>在末尾加上</p>
+<p>export JAVA_HOME=/usr/java/jdk-10.0.2<br>export JRE_HOME=${JAVA_HOME}/jre<br>export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib<br>export PATH=${JAVA_HOME}/bin:$PATH</p>
+<p>这里主要是配置jdk</p>
+<h3 id="etc-profile文件配置"><a href="#etc-profile文件配置" class="headerlink" title="/etc/profile文件配置"></a>/etc/profile文件配置</h3><p>在末尾加上</p>
+<p>CATALINA_HOME=//home/dw/apache-tomcat-7.0.91<br>export CATALINA_HOME</p>
+<p>这里主要配置tomcat</p>
+<h4 id="shadowsocks-qt5"><a href="#shadowsocks-qt5" class="headerlink" title="shadowsocks-qt5"></a>shadowsocks-qt5</h4><p>1 在ubuntu18.04之前的版本下载ss-qt5的步骤是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:hzwhuang/ss-qt5</span><br><span class="line"></span><br><span class="line">  	sudo apt-get update</span><br><span class="line"></span><br><span class="line">  	sudo apt-get install shadowsocks-qt5</span><br></pre></td></tr></table></figure>
+<p>2.但是ppa:hzwhuang/ss-qt5 并没有18.04版本的源，所以再执行update会报错。</p>
+<p>​    这时，只要编辑/etc/apt/sources.list.d/hzwhuang-ubuntu-ss-qt5-bionic.list 文件，将bionic                       (18.04版本代号)改成xenial（16.04版本代号）。</p>
+<p>​    然后再执行</p>
+<p>​    sudo apt-get update</p>
+<p>​    成功之后就是</p>
+<p>​    sudo apt-get install shadowsocks-qt5 </p>
+<p>​    完成。</p>
+<p>至于在google chrome中配置switch omega可以很容易百度到，这里就不在阐述。</p>
+<h4 id="intellij-idea"><a href="#intellij-idea" class="headerlink" title="intellij idea"></a>intellij idea</h4><p>​    主要讲解下破解，ctrl alt t打开终端，vim编辑/etc/hosts 文件 将0.0.0.0 account.jetbrains.com添加入hosts  然后进入 <a href="http://idea.lanyus.com/" target="_blank" rel="noopener">http://idea.lanyus.com/</a> 获取注册码即可</p>
+<h4 id="Apache-tomcat"><a href="#Apache-tomcat" class="headerlink" title="Apache tomcat"></a>Apache tomcat</h4><p>这里我下载的是tomcat 7  </p>
+<p>这里有几点要注意的地方，至少在我这台机子上是这样  首先要编辑bin目录下的catalina.sh文件，在文件开头加入</p>
+<p>CATALINA_HOME=tomcat目录<br>JAVA_HOME=jdk目录</p>
+<p>有可能会在idea出现tomcat权限不够而无法将tomcat集成到项目中这时候就需要</p>
+<p>sudo chmod -R 777 tomcat的目录</p>
+<h4 id="tim"><a href="#tim" class="headerlink" title="tim"></a>tim</h4><p>这里推荐一片文章，是deepin linux移植过来的wine tim</p>
+<p><a href="https://www.lulinux.com/archives/1319" target="_blank" rel="noopener">https://www.lulinux.com/archives/1319</a></p>
+<p><strong>1，安装deepin-wine环境：</strong>上<a href="https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu" target="_blank" rel="noopener">https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu</a>页面下载zip包（或用git方式克隆），解压到本地文件夹，在文件夹中打开终端，输入<code>sudo sh ./install.sh</code>一键安装。</p>
+<p><strong>2，安装deepin.com应用容器：</strong>在<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/</a>中下载想要的容器，点击deb安装即可。以下为推荐容器:</p>
+<ul>
+<li>QQ：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.im/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.im/</a></li>
+<li>TIM：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.office/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.office/</a></li>
+<li>QQ轻聊版：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.im.light/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.im.light/</a></li>
+<li>微信：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.wechat/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.wechat/</a></li>
+<li>Foxmail：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.foxmail/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.foxmail/</a></li>
+<li>百度网盘：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.baidu.pan/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.baidu.pan/</a></li>
+<li>360压缩：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.cn.360.yasuo/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.cn.360.yasuo/</a></li>
+</ul>
+<p><strong>3，Ubuntu 18.04 Gnome桌面显示传统托盘图标：</strong>安装TopIconPlus的gnome-shell扩展，命令：<code>sudo apt-get install gnome-shell-extension-top-icons-plus gnome-tweaks</code>，然后用gnome-tweaks开启这个扩展。</p>
+<p>关于这个第三步讲解一下，gnome是18.04的桌面环境 如果需要美化则需要gnome-tweak-tool这个工具，可以apt install安装，但是里面的拓展很少，我把我电脑里的拓展截图下来</p>
+<p><img src="https://res.cloudinary.com/shmily/image/upload/v1538468221/sys2.png" alt="image"></p>
+<p>当你安装好tweak tool，再安装上述第三个工具会出现很多拓展，至于每个拓展有什么用，自己去试吧</p>
+<p>上述有一个dash to dock的可以这样安装</p>
+<p>​    1 安装git： sudo apt-get install git </p>
+<p>​    2 sudo git clone <a href="https://github.com/micheleg/dash-to-dock.git">https://github.com/micheleg/dash-to-dock.git</a></p>
+<p>​    3 cd dash to dock</p>
+<p>​    4 sudo make </p>
+<p>​    5 make install</p>
+<p>因为git下来的是源代码，你需要手动make才可以使用，上述完成之后，alt+f2 输入r 重启桌面 ，打开tweak tool即可</p>
+<p>电脑右上角有个显示网速的工具叫系统负载查看器 软件商店里有    安装后自己配置</p>
+<p>首选项中全不勾选</p>
+<p>indicator items把网速置顶即可    </p>
+<h4 id="flameshot"><a href="#flameshot" class="headerlink" title="flameshot"></a>flameshot</h4><p>Ubuntu上还有个好用的截图工具flameshot   具体这样配置</p>
+<p> <strong>sudo apt-get install flameshot</strong></p>
+<p>进入 设置&gt;设备&gt;键盘，拉到最下面，点击加号</p>
+<p>快捷键命令填写：<strong>flameshot gui</strong></p>
+<p>暂时更新到这里</p>
+<p>​    </p>
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+</article>
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
     <h1 class="title"><a href="/2018/12/02/csapp第六章存储器层次结构/">csapp第六章 存储器层次结构</a></h1>
   
 
@@ -480,103 +577,6 @@
 <p>注：上一级的存储器作为低一级的存储器的高速缓存</p>
 <h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><h4 id="并行必须要多核吗？"><a href="#并行必须要多核吗？" class="headerlink" title="并行必须要多核吗？"></a>并行必须要多核吗？</h4><pre><code>并行需要多核，多个线程**同时**在多个cpu上运行
 </code></pre>
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
-</article>
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/2018/11/06/记录自己两天的踩坑过程/">记录下Ubuntu的美化和使用</a></h1>
-  
-
-    <time datetime="2018-11-05T16:26:10.013Z">
-  <span class="day">6</span><span class="month">Nov</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      <p>​    </p>
-<p>Ubuntu的配置和美化，话不多说，先上一张图</p>
-<p><img src="https://res.cloudinary.com/shmily/image/upload/v1538465988/sys.png" alt="rutu"></p>
-<h2 id="配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime-text，intellij-idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来"><a href="#配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime-text，intellij-idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来" class="headerlink" title="配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime text，intellij idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来"></a>配置的话，主要就是几个自己常用软件的安装，包括shadows-qt5，wps，sublime text，intellij idea，pycharm，clion，网易云音乐，tim，wechat大部分都可以官网下载安装，少数几个记录下来</h2><h3 id="bashrc文件配置"><a href="#bashrc文件配置" class="headerlink" title="~/.bashrc文件配置"></a>~/.bashrc文件配置</h3><p>在末尾加上</p>
-<p>export JAVA_HOME=/usr/java/jdk-10.0.2<br>export JRE_HOME=${JAVA_HOME}/jre<br>export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib<br>export PATH=${JAVA_HOME}/bin:$PATH</p>
-<p>这里主要是配置jdk</p>
-<h3 id="etc-profile文件配置"><a href="#etc-profile文件配置" class="headerlink" title="/etc/profile文件配置"></a>/etc/profile文件配置</h3><p>在末尾加上</p>
-<p>CATALINA_HOME=//home/dw/apache-tomcat-7.0.91<br>export CATALINA_HOME</p>
-<p>这里主要配置tomcat</p>
-<h4 id="shadowsocks-qt5"><a href="#shadowsocks-qt5" class="headerlink" title="shadowsocks-qt5"></a>shadowsocks-qt5</h4><p>1 在ubuntu18.04之前的版本下载ss-qt5的步骤是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:hzwhuang/ss-qt5</span><br><span class="line"></span><br><span class="line">  	sudo apt-get update</span><br><span class="line"></span><br><span class="line">  	sudo apt-get install shadowsocks-qt5</span><br></pre></td></tr></table></figure>
-<p>2.但是ppa:hzwhuang/ss-qt5 并没有18.04版本的源，所以再执行update会报错。</p>
-<p>​    这时，只要编辑/etc/apt/sources.list.d/hzwhuang-ubuntu-ss-qt5-bionic.list 文件，将bionic                       (18.04版本代号)改成xenial（16.04版本代号）。</p>
-<p>​    然后再执行</p>
-<p>​    sudo apt-get update</p>
-<p>​    成功之后就是</p>
-<p>​    sudo apt-get install shadowsocks-qt5 </p>
-<p>​    完成。</p>
-<p>至于在google chrome中配置switch omega可以很容易百度到，这里就不在阐述。</p>
-<h4 id="intellij-idea"><a href="#intellij-idea" class="headerlink" title="intellij idea"></a>intellij idea</h4><p>​    主要讲解下破解，ctrl alt t打开终端，vim编辑/etc/hosts 文件 将0.0.0.0 account.jetbrains.com添加入hosts  然后进入 <a href="http://idea.lanyus.com/" target="_blank" rel="noopener">http://idea.lanyus.com/</a> 获取注册码即可</p>
-<h4 id="Apache-tomcat"><a href="#Apache-tomcat" class="headerlink" title="Apache tomcat"></a>Apache tomcat</h4><p>这里我下载的是tomcat 7  </p>
-<p>这里有几点要注意的地方，至少在我这台机子上是这样  首先要编辑bin目录下的catalina.sh文件，在文件开头加入</p>
-<p>CATALINA_HOME=tomcat目录<br>JAVA_HOME=jdk目录</p>
-<p>有可能会在idea出现tomcat权限不够而无法将tomcat集成到项目中这时候就需要</p>
-<p>sudo chmod -R 777 tomcat的目录</p>
-<h4 id="tim"><a href="#tim" class="headerlink" title="tim"></a>tim</h4><p>这里推荐一片文章，是deepin linux移植过来的wine tim</p>
-<p><a href="https://www.lulinux.com/archives/1319" target="_blank" rel="noopener">https://www.lulinux.com/archives/1319</a></p>
-<p><strong>1，安装deepin-wine环境：</strong>上<a href="https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu" target="_blank" rel="noopener">https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu</a>页面下载zip包（或用git方式克隆），解压到本地文件夹，在文件夹中打开终端，输入<code>sudo sh ./install.sh</code>一键安装。</p>
-<p><strong>2，安装deepin.com应用容器：</strong>在<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/</a>中下载想要的容器，点击deb安装即可。以下为推荐容器:</p>
-<ul>
-<li>QQ：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.im/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.im/</a></li>
-<li>TIM：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.office/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.office/</a></li>
-<li>QQ轻聊版：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.im.light/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.im.light/</a></li>
-<li>微信：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.wechat/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.wechat/</a></li>
-<li>Foxmail：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.foxmail/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.foxmail/</a></li>
-<li>百度网盘：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.baidu.pan/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.baidu.pan/</a></li>
-<li>360压缩：<a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.cn.360.yasuo/" target="_blank" rel="noopener">http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.cn.360.yasuo/</a></li>
-</ul>
-<p><strong>3，Ubuntu 18.04 Gnome桌面显示传统托盘图标：</strong>安装TopIconPlus的gnome-shell扩展，命令：<code>sudo apt-get install gnome-shell-extension-top-icons-plus gnome-tweaks</code>，然后用gnome-tweaks开启这个扩展。</p>
-<p>关于这个第三步讲解一下，gnome是18.04的桌面环境 如果需要美化则需要gnome-tweak-tool这个工具，可以apt install安装，但是里面的拓展很少，我把我电脑里的拓展截图下来</p>
-<p><img src="https://res.cloudinary.com/shmily/image/upload/v1538468221/sys2.png" alt="image"></p>
-<p>当你安装好tweak tool，再安装上述第三个工具会出现很多拓展，至于每个拓展有什么用，自己去试吧</p>
-<p>上述有一个dash to dock的可以这样安装</p>
-<p>​    1 安装git： sudo apt-get install git </p>
-<p>​    2 sudo git clone <a href="https://github.com/micheleg/dash-to-dock.git">https://github.com/micheleg/dash-to-dock.git</a></p>
-<p>​    3 cd dash to dock</p>
-<p>​    4 sudo make </p>
-<p>​    5 make install</p>
-<p>因为git下来的是源代码，你需要手动make才可以使用，上述完成之后，alt+f2 输入r 重启桌面 ，打开tweak tool即可</p>
-<p>电脑右上角有个显示网速的工具叫系统负载查看器 软件商店里有    安装后自己配置</p>
-<p>首选项中全不勾选</p>
-<p>indicator items把网速置顶即可    </p>
-<h4 id="flameshot"><a href="#flameshot" class="headerlink" title="flameshot"></a>flameshot</h4><p>Ubuntu上还有个好用的截图工具flameshot   具体这样配置</p>
-<p> <strong>sudo apt-get install flameshot</strong></p>
-<p>进入 设置&gt;设备&gt;键盘，拉到最下面，点击加号</p>
-<p>快捷键命令填写：<strong>flameshot gui</strong></p>
-<p>暂时更新到这里</p>
-<p>​    </p>
-
     
     
     <footer class="meta">
