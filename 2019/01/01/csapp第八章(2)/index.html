@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>csapp第八章 异常控制流(2) | 17年在雾都的博客</title>
+  <meta name="author" content="dw Shao">
+
+  
+  <meta name="description" content="进程控制fork创建一个子进程，除了返回的PID（进程ID）不同，其余全部相同两者互不影响，并发执行fork返回两次，一次返回到父进程，一次返回到子进程父进程中返回子进程的PID（不为0）子进程返回0通过这个来判断父子进程waitpid回收子进程当子进程结束时，保持终止状态知道父进程回收，此时子进程">
+  
+  
+
+  <link rel="alternate" href="/atom.xml" title="17年在雾都的博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+</head>
+
+<body>
+  <header id="header" class="inner"><nav>
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+  <div id="content" class="inner"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title">csapp第八章 异常控制流(2)</h1>
+  
+
+    <time datetime="2019-01-01T11:31:25.801Z">
+  <span class="day">1</span><span class="month">Jan</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <h3 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h3><p>fork<br>创建一个子进程，除了返回的PID（进程ID）不同，其余全部相同<br>两者互不影响，并发执行<br>fork返回两次，一次返回到父进程，一次返回到子进程<br>父进程中返回子进程的PID（不为0）<br>子进程返回0<br>通过这个来判断父子进程<br>waitpid<br>回收子进程<br>当子进程结束时，保持终止状态知道父进程回收，此时子进程任然占据内存 </p>
+<p>第一个参数大于零，则等待ID为第一个参数的子进程结束<br>若为-1，这等待任意进程结束<br>如果没有子进程，则返回-1<br>execve<br>在当前进程中加载一个新的程序，覆盖当前进程的地址空间，但没有创建一个新的进程 </p>
+<h3 id="signal"><a href="#signal" class="headerlink" title="signal"></a>signal</h3><p>当子进程完成后，会发送一个信号给父进程让他来回收自己<br>内核对不同的信号有唯一的编码<br>信号传递的整个过程分两个部分<br>第一个部分为信号发送，由内核发送给进程<br>当一个进程正在使用信号处理程序处理某一类型的型号时，同种信号不会被接受，直接被丢弃<br>实际上第二个同种信号不会被丢弃，它被记录到pending组中，而之后的同种信号会被丢弃<br>原因是pending组实际上是在接收到某一信号后，将对应的位设置为一，所以当存在pending时，我们只能确认有多的信号，而不能确认有几个<br>上面说的pending是系统默认的一种信号block形式，当然我们可以显式block各种信号<br>当进程处理完一个信号处理程序后，会查看pending组中待处理的信号，从最小的信号开始处理，知道没有待处理信号，然后会执行下一条程序<br>安全的信号处理程序<br>阻塞所有的信号<br>处理程序和主程序共享全局变量<br>用volatile声明全局变量<br>竞争<br>不能确定子进程和父进程谁先执行导致了竞争的出现<br>难以稳定浮现错误<br>具体见CSAPP第8.5.6节例子<br>sigsuspend函数<br>格式：int sigsuspend(const sigset_t *mask)<br>暂时取消所有block，然后挂起该进程，知道收到一个信号mask中是我们不想被收到的信号</p>
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+</article></div>
+  <footer id="footer" class="inner"><div class="social alignright">
+  
+  
+  
+  
+  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
+</div>
+<p>
+  
+  &copy; 2019 dw Shao
+  
+</p>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id="phasebeam">
+  <canvas></canvas>
+  <canvas></canvas>
+  <canvas></canvas>
+</div>
+<script src="/js/phasebeam.js"></script>
+</body>
+</html>

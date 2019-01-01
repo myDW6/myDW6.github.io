@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>csapp第八章 异常控制流 | 17年在雾都的博客</title>
+  <meta name="author" content="dw Shao">
+
+  
+  <meta name="description" content="异常控制流​    要理解异常控制流,需要先知道控制流.
+我们知道,计算机从开机启动开始,会有一个特殊的寄存器叫程序计数器一直指向我们的程序运行位置,我们假设程序计数器的值为一个序列,a0,a1,a2….an,那么每一次ak的值跳转到a k+1的过渡就成为控制转移,然后这种控制转移序列叫做处理器的控">
+  
+  
+
+  <link rel="alternate" href="/atom.xml" title="17年在雾都的博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+</head>
+
+<body>
+  <header id="header" class="inner"><nav>
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+  <div id="content" class="inner"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title">csapp第八章 异常控制流</h1>
+  
+
+    <time datetime="2019-01-01T09:19:14.116Z">
+  <span class="day">1</span><span class="month">Jan</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <h3 id="异常控制流"><a href="#异常控制流" class="headerlink" title="异常控制流"></a>异常控制流</h3><p>​    要理解异常控制流,需要先知道控制流.</p>
+<p>我们知道,计算机从开机启动开始,会有一个特殊的寄存器叫程序计数器一直指向我们的程序运行位置,我们假设程序计数器的值为一个序列,a0,a1,a2….an,那么每一次ak的值跳转到a k+1的过渡就成为控制转移,然后这种控制转移序列叫做处理器的控制流(control flow),但是作为现代操作系统,仅仅拥有这种控制流是远远不够的,必须具有对系统状态变化做出反应的能力,而这些系统状态突变也就对应着我们的异常控制流(ECF)</p>
+<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><p>熟悉java语言的人应该会知道java的异常处理机制,那么这里的异常和我们操作系统底层的异常有何联系和区别呢?<br>​    个人看法:程序设计语言的异常处理机制,应该是封装了的在应用层级别的异常控制流.</p>
+<p>​    这里,异常定义为:控制流中的突变,来响应处理器状态中的某些变化,是异常控制流的一种形式,一部分由硬件实现,一部分由操作系统实现.</p>
+<p>​    在一些情况下,比如发生缺页中断,算术除0,等操作时,处理器会通过一张叫异常表的跳转表,进行一个间接过程调用,到一个专门处理这种事件的操作系统子程序(异常处理程序)中去进行处理.</p>
+<h3 id="异常的类别"><a href="#异常的类别" class="headerlink" title="异常的类别"></a>异常的类别</h3><ol>
+<li>中断 interrupt</li>
+<li>陷阱(陷入) trap</li>
+<li>故障 fault</li>
+<li>终止 abort    </li>
+</ol>
+<p>首先,中断是异步发生,何为异步,是指由于处理器外部的io设备产生,但是交由处理器处理,还得通过总线传输等过程,而同步是指执行一条指令,立刻产生效果(异常),由于中断是为了响应IO请求,故而为异步中断.</p>
+<p>对于陷阱,我们知道,操作系统将进程分为内核态和用户态,显然,内核态的进程对于资源的控制(处理器,内存,IO)都要多于在用户态的进程,但是用户态的进程要是需要使用操作系统内核的功能,又或是需要调用一些操作系统提供的服务,那这个时候便需要陷阱,陷阱的作用就相当于在用户程序和内核之间提供了一个接口,这个接口叫做系统调用.</p>
+<p>故障显然和上面描述的异常不一样,上面的是程序正确运行多必须的,而故障却是由一些情况产生的,最典型的就是内存中的缺页异常,注意:故障是可以被修复的,还是这个例子,我们需要的页没在内存中,导致故障,处理器将控制权交给异常处理中的缺页处理程序,该过程后返回到故障程序,此时已经不会发生故障,可以完成运行.</p>
+<p>终止则是因为发生了致命错误,导致无法恢复,无计可施了只能终止程序运行.</p>
+<h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><p>进程的概念可以说是运行中程序的实例,其实没必要理解的如此复杂,仅仅知道他就是运行中的程序即可,进程的概念虽然简单,但是影响却不小,基于进程的概念我们可以解释很多计算机科学中的其他概念</p>
+<p>我们在现代操作系统上运行程序时是不是会有这样一种体验,假如我运行qq同时还在音乐,感觉我的qq和音乐程序一直都在运行,这边是操作系统给我们提供的一种假象,在多道程序设计中,cpu以很短的时间在进程间切换,这个时间对于人类来说,根本就察觉不出来,故而有这样一种假象,但其实在任一时刻,cpu只处理一个程序中的指令(忽略多核并行),然后我们可以引入我们并发流的概念</p>
+<h3 id="并发流"><a href="#并发流" class="headerlink" title="并发流"></a>并发流</h3><p>通过上面的介绍,我们知道了计算机有着很多的逻辑流,而如果一个逻辑流在时间上和另一个逻辑流重叠,则称为并发流,多个流并发执行的现象叫做并发.</p>
+<p>并发流思想和处理器核心数无关,不要和并行弄混淆,并行需要多核才可以.如果两个流在时间上重叠了,那么他们就是并发的,即使运行在一个处理器核心上,并行流是并发流的一个真子集,两个流并发的运行在<strong>不同</strong>的处理器核心上,那我们称为并行流,具体参考操作系统关于对称多处理和集群的概念.</p>
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+</article></div>
+  <footer id="footer" class="inner"><div class="social alignright">
+  
+  
+  
+  
+  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
+</div>
+<p>
+  
+  &copy; 2019 dw Shao
+  
+</p>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id="phasebeam">
+  <canvas></canvas>
+  <canvas></canvas>
+  <canvas></canvas>
+</div>
+<script src="/js/phasebeam.js"></script>
+</body>
+</html>
