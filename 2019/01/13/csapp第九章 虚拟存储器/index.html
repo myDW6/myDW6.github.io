@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>csapp第九章 虚拟存储器 | 17年在雾都的博客</title>
+  <meta name="author" content="dw Shao">
+
+  
+  <meta name="description" content="为了有效管理存储器并少出错,现代操作系统提供了对主存的抽象概念,叫做虚拟存储器需要知道:
+虚拟存储器是硬件异常,硬件地址翻译,主存和磁盘文件,内核软件的完美交互
+为每一个进程提供一个大的,一致的和私有的地址空间
+将主存作为磁盘地址空间的高速缓存
+保护每个进程的地址空间不被其他进程破坏
+
+虚拟存储器遍">
+  
+  
+
+  <link rel="alternate" href="/atom.xml" title="17年在雾都的博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+</head>
+
+<body>
+  <header id="header" class="inner"><nav>
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+  <div id="content" class="inner"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title">csapp第九章 虚拟存储器</h1>
+  
+
+    <time datetime="2019-01-13T13:16:23.753Z">
+  <span class="day">13</span><span class="month">Jan</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <h3 id="为了有效管理存储器并少出错-现代操作系统提供了对主存的抽象概念-叫做虚拟存储器"><a href="#为了有效管理存储器并少出错-现代操作系统提供了对主存的抽象概念-叫做虚拟存储器" class="headerlink" title="为了有效管理存储器并少出错,现代操作系统提供了对主存的抽象概念,叫做虚拟存储器"></a>为了有效管理存储器并少出错,现代操作系统提供了对主存的抽象概念,叫做虚拟存储器</h3><h4 id="需要知道"><a href="#需要知道" class="headerlink" title="需要知道:"></a>需要知道:</h4><ul>
+<li>虚拟存储器是硬件异常,硬件地址翻译,主存和磁盘文件,内核软件的完美交互</li>
+<li>为每一个进程提供一个大的,一致的和私有的地址空间</li>
+<li>将主存作为磁盘地址空间的高速缓存</li>
+<li>保护每个进程的地址空间不被其他进程破坏</li>
+</ul>
+<p>虚拟存储器遍布在计算机系统所有层次,硬件异常,汇编器,链接器,加载器,共享对象,文件和进程中扮演重要角色</p>
+<h4 id="虚拟存储器是危险的"><a href="#虚拟存储器是危险的" class="headerlink" title="虚拟存储器是危险的:"></a>虚拟存储器是危险的:</h4><p>引用变量,间接引用指针,调用malloc动态分配程序,就会和虚拟存储器交互</p>
+<p>如果使用不当,将遇到危险复杂的与存储器有关的错误:段错误,保护错误</p>
+<h3 id="物理寻址"><a href="#物理寻址" class="headerlink" title="物理寻址:"></a>物理寻址:</h3><p>计算机主存被组成为m个连续的字节大小的单元数组,每个字节地址叫做物理地址;</p>
+<p>cpu访问存储器最自然方式是使用物理地址,该方式成为物理寻址</p>
+<h3 id="虚拟寻址"><a href="#虚拟寻址" class="headerlink" title="虚拟寻址"></a>虚拟寻址</h3><p>cpu生成一个虚拟地址,来访问主存</p>
+<h3 id="地址翻译"><a href="#地址翻译" class="headerlink" title="地址翻译"></a>地址翻译</h3><p>将虚拟地址转为物理地址就叫做地址翻译</p>
+<p>地址翻译需要cpu和操作系统之间的合作</p>
+<p>​    主要利用储存在主存中的查询表来动态翻译虚拟地址</p>
+<p>​    查询表则由操作系统进行管理</p>
+<h3 id="地址空间"><a href="#地址空间" class="headerlink" title="地址空间"></a>地址空间</h3><p>地址空间就是一个非负整数地址的有序集合</p>
+<p>如果地址空间中整数连续,则成为线性地址空间</p>
+<p>一个地址空间大小由表示最大地址需要的位数来描述</p>
+<p>虚拟地址空间就是在一个带虚拟存储器的系统中,cpu从一个有N=2^n个地址的地址空间中生成虚拟地址,这个地址空间成为虚拟地址空间</p>
+<p>那当然也有物理地址空间,与系统中物理存储器的M=2^m个字节对应</p>
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+</article></div>
+  <footer id="footer" class="inner"><div class="social alignright">
+  
+  
+  
+  
+  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
+</div>
+<p>
+  
+  &copy; 2019 dw Shao
+  
+</p>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id="phasebeam">
+  <canvas></canvas>
+  <canvas></canvas>
+  <canvas></canvas>
+</div>
+<script src="/js/phasebeam.js"></script>
+</body>
+</html>
