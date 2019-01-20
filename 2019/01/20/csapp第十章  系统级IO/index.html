@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>csapp第十章 系统级IO | 17年在雾都的博客</title>
+  <meta name="author" content="dw Shao">
+
+  
+  <meta name="description" content="​    还记得在第一章节总体介绍计算机系统时,就有一个说法,说操作系统实现了一种抽象,即在linux中,所有的IO设备都是文件
+​    shell在每个进程的开始都打开三个文件:标准输入,标准输出,标准错误
+​    
+​    元数据:记录文件的相关数据
+​    目录:每个目录都是一个结构
+">
+  
+  
+
+  <link rel="alternate" href="/atom.xml" title="17年在雾都的博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+</head>
+
+<body>
+  <header id="header" class="inner"><nav>
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+  <div id="content" class="inner"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title">csapp第十章 系统级IO</h1>
+  
+
+    <time datetime="2019-01-20T12:21:51.260Z">
+  <span class="day">20</span><span class="month">Jan</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <p>​    还记得在第一章节总体介绍计算机系统时,就有一个说法,说操作系统实现了一种抽象,即在linux中,所有的IO设备都是文件</p>
+<p>​    shell在每个进程的开始都打开三个文件:标准输入,标准输出,标准错误</p>
+<p>​    </p>
+<p>​    元数据:记录文件的相关数据</p>
+<p>​    目录:每个目录都是一个结构</p>
+<p>​    共享文件:</p>
+<p>​        标识符表</p>
+<p>​            每个进程都有一个标识符表</p>
+<p>​            每个表项都指向文件表中的一个表项</p>
+<p>​        文件表<br>​            所有进程共享一文件表</p>
+<p>​            每个表项目由文件位置,引用计数和指向V-node表的表项的指针构成</p>
+<p>​        v-node表</p>
+<p>​            所有进程共享</p>
+<p>​            这个才是真正的描述唯一的磁盘文件</p>
+<p>​        </p>
+<p>​            </p>
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+</article></div>
+  <footer id="footer" class="inner"><div class="social alignright">
+  
+  
+  
+  
+  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
+</div>
+<p>
+  
+  &copy; 2019 dw Shao
+  
+</p>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id="phasebeam">
+  <canvas></canvas>
+  <canvas></canvas>
+  <canvas></canvas>
+</div>
+<script src="/js/phasebeam.js"></script>
+</body>
+</html>
